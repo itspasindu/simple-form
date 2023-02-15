@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Advanced HTML Form with Client-Side Validation</title>
+  <script>
+    function validateForm() {
+      // Get the form elements
+      var firstName = document.forms["myForm"]["firstName"].value;
+      var lastName = document.forms["myForm"]["lastName"].value;
+      var email = document.forms["myForm"]["email"].value;
+      var phoneNumber = document.forms["myForm"]["phoneNumber"].value;
+      var gender = document.forms["myForm"]["gender"].value;
+      var paymentMethod = document.forms["myForm"]["paymentMethod"].value;
+      var termsAndConditions = document.forms["myForm"]["termsAndConditions"].checked;
+
+      // Validate the form
+      if (firstName == "") {
+        alert("Please enter your first name");
+        return false;
+      }
+
+      if (lastName == "") {
+        alert("Please enter your last name");
+        return false;
+      }
+
+      if (email == "") {
+        alert("Please enter your email");
+        return false;
+      }
+
+      if (phoneNumber == "") {
+        alert("Please enter your phone number");
+        return false;
+      }
+
+      if (gender == "") {
+        alert("Please select your gender");
+        return false;
+      }
+
+      if (paymentMethod == "") {
+        alert("Please select your payment method");
+        return false;
+      }
+
+      if (!termsAndConditions) {
+        alert("Please accept the terms and conditions");
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <form name="myForm" onsubmit="return validateForm()" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+
+    <label for="gender">Gender:</label>
+    <input type="radio" id="male" name="gender" value="male" required>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+
+    <label for="paymentMethod">Payment Method:</label>
+    <select id="paymentMethod" name="paymentMethod" required>
+      <option value="">-- Please select --</option>
+      <option value="creditCard">Credit Card</option>
+      <option value="paypal">PayPal</option>
+      <option value="bankTransfer">Bank Transfer</option>
+    </select><br>
+
+    <label for="additionalInfo">Additional Information:</label>
+    <textarea id="additionalInfo" name="additionalInfo" rows="4" cols="50"></textarea><br>
+
+    <label for="termsAndConditions">Terms and Conditions:</label>
+    <input type="checkbox" id="termsAndConditions" name="termsAndConditions" required>
+    <label for="termsAndConditions">I accept the terms and conditions</label><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="successMessage" style="display: none;">
